@@ -1,0 +1,14 @@
+{
+    "hosted" : {
+        "metadata" : "https://storage.googleapis.com/tfjs-models/tfjs/sentiment_cnn_v1/metadata.json",
+        "model" : "https://storage.googleapis.com/tfjs-models/tfjs/sentiment_cnn_v1/model.json"
+    },
+    "local" : {
+        "model" : "http://localhost:1235/resources/model.json",
+        "metadata" : "http://localhost:1235/resources/metadata.json"
+    },
+    "hosted_lstm" : {
+        "model" : "https://storage.googleapis.com/tfjs-models/tfjs/sentiment_lstm_v1/model.json",
+        "metadata" : "https://storage.googleapis.com/tfjs-models/tfjs/sentiment_lstm_v1/metadata.json"
+    }
+}
