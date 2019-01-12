@@ -23,6 +23,25 @@ let preprocessor = (text, mtd) => {
     return inputVector_float32.toTensor();
 }
 
+let stream_preprocessor = (text_data, mtd) => {
+    var preprocessedInput = []
+    for(var i = 0; i < text_data.length; i++) 
+        preprocessedInput.push(preprocessor(text_data[i], mtd))
+    
+    return preprocessedInput
+}
+
+let stream_executor = (inputTensors_32, model) => {
+    var resultObjects = []
+
+    for(var i = 0; i < inputTensors_32.length; i++) {
+        var result = inference(inputTensors_32[i], model)
+        resultObjects.push(result)
+    }
+
+    return resultObjects
+}
+
 let inference = (inputTensor_32, model) => {
     let start = performance.now()
     let prediction = model.predict(inputTensor_32)
@@ -45,4 +64,4 @@ let inference = (inputTensor_32, model) => {
     }
 }
 
-export {getRequiredMetadata, inference, preprocessor}
+export {getRequiredMetadata, inference, preprocessor, stream_executor, stream_preprocessor}

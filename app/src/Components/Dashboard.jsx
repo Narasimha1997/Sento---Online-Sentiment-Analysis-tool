@@ -9,7 +9,7 @@ import Divider from '@material-ui/core/Divider'
 import Icon from '@material-ui/core/Icon'
 import {Navigator} from './Home'
 import Paper from '@material-ui/core/Paper'
-import TrailPanel from './Elements/TrailInference'
+import {TrailPanel} from './Elements/TrailInference'
 import  Typography  from '@material-ui/core/Typography';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -19,6 +19,8 @@ import Grid from '@material-ui/core/Grid'
 import { ExpansionPanelActions } from '@material-ui/core';
 import About from './Elements/About'
 import Feedback from './Elements/Feedback'
+
+import ContainerClass from './Elements/Analysis'
 
 
 class ModelSelector extends React.Component {
@@ -108,7 +110,9 @@ class SidePanel extends React.Component {
                            <ListItemText primary = "Trail Mode" secondary = "Use it when you want to experiment with the API" />
                        </ListItem>
                        <Divider />
-                       <ListItem button>
+                       <ListItem button onClick = {() => {
+                           this.props.handler(2)
+                       }}>
                            <ListItemIcon><Icon>insert_chart_outline</Icon></ListItemIcon>
                            <ListItemText primary = "Analyze" secondary = "Upload a CSV file and obtain insights" />
                        </ListItem>
@@ -168,8 +172,10 @@ class Dashboard extends React.Component {
         switch(code) {
             case 0 : this.setState({component : ModelSelector}); break;
             case 1 : this.setState({component : TrailPanel}); break;
+            case 2 : this.setState({component : ContainerClass}); break;
             case 3 : this.setState({component : About}); break;
             case 4 : this.setState({component : Feedback}); break;
+
             default : break;
         }
 

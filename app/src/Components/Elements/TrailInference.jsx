@@ -165,4 +165,4 @@ class TrailPanel extends React.Component {
     }
 }
 
-export default TrailPanel
+export {TrailPanel, ResultInfo}

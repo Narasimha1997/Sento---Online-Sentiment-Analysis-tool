@@ -14,16 +14,21 @@ class Feedback extends React.Component {
     }
 
     handlerMail(username, subject, feedbackText) {
-        alert('Yet to be implemented')
-        /*sendmail({
-            from : username,
-            to : 'narasimhaprasannahn@gmail.com',
-            subject : subject,
-            html : feedbackText
-        }, (err, reply) => {
-            if(err) throw err;
-            else console.log(reply)
-        })*/
+        fetch('http://localhost:5000/REST.php', {
+            headers : {
+                "Content-Type" : "text/plain"
+            },
+            method : 'post',
+            mode : 'no-cors',
+            body : JSON.stringify({
+                email : this.state.username,
+                title : this.state.subject,
+                description : this.state.feedbackText,
+                classification : 'NONE',
+                probability : 0.0
+            })}).then((data) =>{
+                alert("Submitted your feedback !")
+            }).catch((err) => alert("Error in feedback"))
     }
 
     render() {
